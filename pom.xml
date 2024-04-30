@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.5</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.azati.study</groupId>
+    <artifactId>liquibase-migration-shortening-demo</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>liquibase-migration-shortening-demo</name>
+    <description>liquibase-migration-shortening-demo</description>
+    <properties>
+        <java.version>17</java.version>
+    </properties>
+    <dependencies>
+    </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.liquibase</groupId>
+                    <artifactId>liquibase-maven-plugin</artifactId>
+                    <version>4.27.0</version>
+                    <configuration>
+                        <driver>org.postgresql.Driver</driver>
+                        <url>jdbc:postgresql://localhost:5432/postgres</url>
+                        <username>postgres</username>
+                        <password>password</password>
+
+                        <outputChangeLogFile>result.xml</outputChangeLogFile>
+                        <changeSetAuthor>kirieg</changeSetAuthor>
+                        <!-- если нужно обобщить только структуру -->
+<!--                        <diffTypes>tables,views,columns,indexes,foreignkeys,primarykeys,uniqueconstraints</diffTypes>-->
+                        <!-- если нужно обобщить структуру и данные -->
+                        <diffTypes>tables,views,columns,indexes,foreignkeys,primarykeys,uniqueconstraints,data</diffTypes>
+                    </configuration>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.postgresql</groupId>
+                            <artifactId>postgresql</artifactId>
+                            <version>42.6.0</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
