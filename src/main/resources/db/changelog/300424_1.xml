@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="c474d38e-316b-4733-8d56-c83a32a2caaf" author="kirieg">
+        <createTable tableName="item">
+            <column name="id" type="int">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_ITEM"/>
+            </column>
+            <column name="name" type="varchar(50)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="adfa04a3-962e-4de4-85ca-f42892414d41" author="kirieg">
+        <insert tableName="item">
+            <column name="id" value="1"/>
+            <column name="name" value="name1"/>
+        </insert>
+        <insert tableName="item">
+            <column name="id" value="2"/>
+            <column name="name" value="name2"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="7e103c8c-2333-439a-96db-53560fdeb642" author="kirieg">
+        <addColumn tableName="item">
+            <column name="number" type="int"/>
+            <column name="status" type="varchar(50)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="cbdd764b-8407-4cbc-85c6-f5f41b915a12" author="kirieg">
+        <update tableName="item">
+            <column name="number" value="1"/>
+            <column name="status" value="new"/>
+        </update>
+    </changeSet>
+
+    <changeSet id="e6053b17-2c73-4bb5-b2d8-3f07497ef654" author="kirieg">
+        <delete tableName="item">
+            <where>id = 2</where>
+        </delete>
+    </changeSet>
+
+    <changeSet id="9b84e0eb-112a-4d50-bef5-3635092a62a8" author="kirieg">
+        <dropColumn tableName="item" columnName="number"/>
+    </changeSet>
+
+</databaseChangeLog>
